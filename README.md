@@ -6,25 +6,14 @@ A simple library that takes a snapshot of a Postgres or MySQL database and uploa
 
 1. Install it
 
-    pip install django-bacman
+    pip install bacman
 
 
-2. Add to INSTALLED_APPS
+2. Create Python file
 
-    INSTALLED_APPS = (
-        ...,
-        django-bacman,
-    )
+    from bacman.postgres import Postgres
 
-
-3. Run the management scripts
-
-    python manage.py bacman_postgres
-
-or
-
-    python manage.py bacman_mysql
-
+    Postgres(remove_old_tmp=True)
 
 ## Settings ##
 
