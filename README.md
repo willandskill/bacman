@@ -12,7 +12,7 @@ pip install bacman boto dj-database-url
 
 2. Create .py file with the contents below
 
-```bash
+```python
 from bacman.postgres import Postgres
 
 Postgres(remove_old_tmp=True)
