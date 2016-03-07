@@ -6,20 +6,20 @@ A simple library that takes a snapshot of a Postgres or MySQL database and uploa
 
 1. Install it
 
-        pip install bacman
+    pip install bacman
     
 
 
 2. Create .py file with the contents below
 
-        from bacman.postgres import Postgres
+    from bacman.postgres import Postgres
 
-        Postgres(remove_old_tmp=True)
+    Postgres(remove_old_tmp=True)
     
 
 ## Settings ##
 
-### DATABASE ###
+### DATABASE
 
 **DATABASE_URL**
 
@@ -28,7 +28,7 @@ Please add the `DATABASE_URL` variable to your `/etc/environment` or `.pam_envir
 Read more at https://github.com/kennethreitz/dj-database-url
 
 
-### Amazon Web Services ###
+### Amazon Web Services
 
 **AWS_ACCESS_KEY_ID**
 
@@ -41,13 +41,13 @@ Please add the `AWS_SECRET_ACCESS_KEY` variable to your `/etc/environment` or `.
 
 ### BacMan ###
 
-**BACMAN_BUCKET**
+#### BACMAN_BUCKET
 
 Please add the `BACMAN_BUCKET` variable to your `/etc/environment` or `.pam_environment`
 
-**BACMAN_DIRECTORY**
-default: /tmp/
+#### BACMAN_DIRECTORY
+* default: /tmp/
 
-**BACMAN_PREFIX**
-default (Postgres): pgdump
-default (MySQL): mysqldump
+#### BACMAN_PREFIX
+* default (Postgres): `pgdump`
+* default (MySQL): `mysqldump`
