@@ -15,7 +15,6 @@ A simple library that takes a snapshot of a Postgres or MySQL database and uploa
     from bacman.postgres import Postgres
 
     Postgres(remove_old_tmp=True)
-    
 
 ## Settings ##
 
