@@ -46,7 +46,7 @@ Please add the `AWS_SECRET_ACCESS_KEY` variable to your `/etc/environment` or `.
 Please add the `BACMAN_BUCKET` variable to your `/etc/environment` or `.pam_environment`
 
 #### BACMAN_DIRECTORY
-* default: /tmp/
+* default: `/tmp/bacman`
 
 #### BACMAN_PREFIX
 * default (Postgres): `pgdump`
