@@ -7,10 +7,8 @@ A simple library that takes a snapshot of a Postgres or MySQL database and uploa
 1. Install it
 
 ```bash
-pip install bacman
+pip install bacman boto dj-database-url
 ```
-    
-
 
 2. Create .py file with the contents below
 
