@@ -5,16 +5,14 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-import sys
+import boto
+import dj_database_url
 import os
 import subprocess
-import boto
 
 from datetime import datetime, timedelta
 
 from boto.s3.key import Key
-
-import dj_database_url
 
 
 class BacMan:
@@ -97,7 +95,10 @@ class BacMan:
             raise e
 
     def upload_backup_file(self, path):
-        conn = boto.connect_s3(self.aws_key, self.aws_secret)
+        conn = boto.s3.connect_to_region('eu-west-1',
+                                         aws_access_key_id=self.aws_key,
+                                         aws_secret_access_key=self.aws_key,
+                                         is_secure=True)
         bucket = conn.get_bucket(self.aws_bucket)
         k = Key(bucket)
         # Set key to filename only
