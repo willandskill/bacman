@@ -60,8 +60,11 @@ class BacMan:
         path = self.create_snapshot(path)
 
         if to_s3:
-            self.conn = boto.connect_s3(self.aws_key, self.aws_secret)
-            self.bucket = self.conn.get_bucket(os.environ['BACMAN_BUCKET'])
+            self.conn = boto.s3.connect_to_region('eu-west-1',
+                                                  aws_access_key_id=self.aws_key,
+                                                  aws_secret_access_key=self.aws_secret,
+                                                  is_secure=True)
+            self.bucket = self.conn.get_bucket(self.aws_bucket)
             logger.info("Uploading file {} to S3 bucket ({}) ...".format(path, self.aws_bucket))
             self.upload_backup_file(path)
             logger.info("File upload was successful...")
@@ -103,13 +106,7 @@ class BacMan:
             raise e
 
     def upload_backup_file(self, path):
-        conn = boto.s3.connect_to_region('eu-west-1',
-                                         aws_access_key_id=self.aws_key,
-                                         aws_secret_access_key=self.aws_secret,
-                                         is_secure=True)
-
-        bucket = conn.get_bucket(self.aws_bucket)
-        k = Key(bucket)
+        k = Key(self.bucket)
         # Set key to filename only
         k.key = path.split('/')[-1]
         k.set_contents_from_filename(path)
