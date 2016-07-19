@@ -52,3 +52,19 @@ Please add the `BACMAN_BUCKET` variable to your `/etc/environment` or `.pam_envi
 #### BACMAN_PREFIX
 * default (Postgres): `pgdump`
 * default (MySQL): `mysqldump`
+
+
+### Examples ###
+
+
+```python
+# /home/bacman/runbacman.py
+
+from bacman.postgres import Postgres
+
+def main():
+  Postgres(to_s3=True, remove_old_tmp=True)
+
+if __name__ == "__main__":
+  main()
+```
