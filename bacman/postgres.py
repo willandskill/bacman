@@ -10,7 +10,7 @@ class Postgres(BacMan):
     suffix = "bak"
 
     def get_command(self, path):
-        command_string = "export PGPASSWORD={password}\npg_dump -Fc -U {user} -h {host} -p {port} {name} -f {path}"
+        command_string = "export PGPASSWORD={password}\npg_dump -Fc -U {user} -h {host} -p {port} {name} --no-owner --no-acl -f {path}"
         command = command_string.format(user=self.user,
                                         password=self.password,
                                         host=self.host,
