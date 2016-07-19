@@ -4,13 +4,23 @@ A simple library that takes a snapshot of a Postgres or MySQL database and uploa
 
 ## Installation ##
 
-1. Install it
+**Step 1:** - Install it
 
 ```bash
 pip install bacman
 ```
 
-2. Create .py file with the contents below
+**Step 2:** Add proper environment variables in your `/etc/environment` or `.pam_environment`
+
+```bash
+AWS_SECRET_ACCESS_KEY="YOURAWSSECRETACCESSKEYABCDEFGHIJKLMNOPQR"
+AWS_ACCESS_KEY_ID="YOURAWSACCESSKEYIDAB"
+
+BACMAN_BUCKET="bacman-example"
+BACMAN_DIRECTORY="/home/bacman/backups"
+```
+
+**Step 3:** Create .py file with the contents below
 
 ```python
 from bacman.postgres import Postgres
