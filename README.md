@@ -56,7 +56,6 @@ Please add the `BACMAN_BUCKET` variable to your `/etc/environment` or `.pam_envi
 
 ### Examples ###
 
-
 ```python
 # /home/bacman/runbacman.py
 
@@ -67,4 +66,11 @@ def main():
 
 if __name__ == "__main__":
   main()
+```
+
+```bash
+# Open your crontab editor by typing crontab -e
+
+# m h  dom mon dow   command
+0 */2 * * * ~/env/bin/python ~/runbacman.py >> /home/bacman/logs/crontab.log 2>&1
 ```
