@@ -46,13 +46,6 @@ class BacMan:
     tmp_hours_ago = datetime.now() - timedelta(hours=1)
 
     def __init__(self, to_s3=False, remove_old_s3=False, remove_old_tmp=False):
-        # Dump values
-        logger.info(pprint.pformat({
-            'AWS_ACCESS_KEY_ID': self.aws_key,
-            'AWS_SECRET_ACCESS_KEY': self.aws_secret,
-            'BACMAN_BUCKET': self.aws_bucket
-        }))
-
         # Check if directory exists
         self.check_directory()
 
