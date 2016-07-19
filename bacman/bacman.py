@@ -8,6 +8,7 @@ logger = logging.getLogger(__name__)
 import boto
 import dj_database_url
 import os
+import pprint
 import subprocess
 
 from datetime import datetime, timedelta
@@ -43,6 +44,13 @@ class BacMan:
     tmp_hours_ago = datetime.now() - timedelta(hours=1)
 
     def __init__(self, to_s3=False, remove_old_s3=False, remove_old_tmp=False):
+        # Dump values
+        logger.info(pprint.pformat({
+            'AWS_ACCESS_KEY_ID': self.aws_key,
+            'AWS_SECRET_ACCESS_KEY': self.aws_secret,
+            'BACMAN_BUCKET': self.aws_bucket
+        }))
+
         # Check if directory exists
         self.check_directory()
 
@@ -97,8 +105,9 @@ class BacMan:
     def upload_backup_file(self, path):
         conn = boto.s3.connect_to_region('eu-west-1',
                                          aws_access_key_id=self.aws_key,
-                                         aws_secret_access_key=self.aws_key,
+                                         aws_secret_access_key=self.aws_secret,
                                          is_secure=True)
+
         bucket = conn.get_bucket(self.aws_bucket)
         k = Key(bucket)
         # Set key to filename only
