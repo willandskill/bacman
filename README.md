@@ -13,6 +13,8 @@ pip install bacman
 **Step 2:** Add proper environment variables in your `/etc/environment` or `.pam_environment`
 
 ```bash
+DATABASE_URL=postgres://dbuser:dbpass@localhost:5432/dbname
+
 AWS_SECRET_ACCESS_KEY="YOURAWSSECRETACCESSKEYABCDEFGHIJKLMNOPQR"
 AWS_ACCESS_KEY_ID="YOURAWSACCESSKEYIDAB"
 
