@@ -5,7 +5,7 @@ from setuptools import find_packages
 
 setup(
     name='bacman',
-    version='0.1.61',
+    version='0.1.7',
     author=u'Will & Skill AB',
     author_email='info@willandskill.se',
     packages=find_packages(),
