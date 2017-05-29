@@ -90,6 +90,13 @@ if __name__ == "__main__":
   main()
 ```
 
+You can test run the script above by
+
+```
+$ chmod +x runbacman.py
+$ python runbacman.py
+```
+
 ```bash
 # Open your crontab editor by typing crontab -e
 
