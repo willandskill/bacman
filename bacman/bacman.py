@@ -162,7 +162,7 @@ class BacMan:
                 if os.path.exists(path):
                     t = os.path.getmtime(path)
                     timestamp = datetime.fromtimestamp(t)
-                    logger.info("Checking file <Path: {}, Timestamp: {}> from remote storage...".format(path, timestamp))
+                    logger.info("Checking file <Path: {}, Timestamp: {}> in local file system...".format(path, timestamp))
                     if timestamp < self.local_snapshot_timeout:
                         logger.info("Deleting file <{}> from local file system...".format(path))
                         os.remove(path)
