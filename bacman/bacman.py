@@ -148,7 +148,7 @@ class BacMan:
         # Delete files older than a certain period from bucket.
         for key in self.bucket.list():
             timestamp = datetime.strptime(key.last_modified, '%Y-%m-%dT%H:%M:%S.%fZ')
-            logger.info("Checking file with <Key: {}, Timestamp: {}> from remote storage...".format(key, timestamp))
+            logger.info("Checking remote file {} with <Timestamp: {}>...".format(key, timestamp))
             if timestamp < self.remote_snapshot_timeout:
                 logger.info("Deleting file <{}> from remote storage...".format(key))
                 self.bucket.delete_key(key)
@@ -158,6 +158,7 @@ class BacMan:
         for _file in os.listdir(self.directory):
             if _file.startswith(self.filename_prefix):
                 path = "{}{}".format(self.directory, _file)
+                logger.info("Looking for file with path: {}...".format(path))
                 if os.path.exists(path):
                     t = os.path.getmtime(path)
                     timestamp = datetime.fromtimestamp(t)
