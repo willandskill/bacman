@@ -66,24 +66,26 @@ class BacMan:
         if cleanup_remote_snapshots:
             # How many hours should we keep the files in our S3 bucket?
             self.remote_snapshot_timeout = datetime.now() - timedelta(hours=720)
-            if is_positive_number(remote_snapshot_timeout):
-                self.remote_snapshot_timeout = datetime.now() - timedelta(hours=remote_snapshot_timeout)
-            else:
-                message = "Invalid parameter passed for 'remote_snapshot_timeout'. Using default: {} hours!".format(
-                    self.remote_snapshot_timeout
-                )
-                logger.info(message)
+            if remote_snapshot_timeout is not None:
+                if is_positive_number(remote_snapshot_timeout):
+                    self.remote_snapshot_timeout = datetime.now() - timedelta(hours=remote_snapshot_timeout)
+                else:
+                    message = "Invalid parameter passed for 'remote_snapshot_timeout'. Using default: {} hours!".format(
+                        self.remote_snapshot_timeout
+                    )
+                    logger.info(message)
 
         if cleanup_local_snapshots:
             # How many hours should we keep the files in our local filesystem?
             self.local_snapshot_timeout = datetime.now() - timedelta(hours=720)
-            if is_positive_number(local_snapshot_timeout):
-                self.local_snapshot_timeout = datetime.now() - timedelta(hours=local_snapshot_timeout)
-            else:
-                message = "Invalid parameter passed for 'local_snapshot_timeout'. Using default: {} hours!".format(
-                    self.local_snapshot_timeout
-                )
-                logger.info(message)
+            if local_snapshot_timeout is not None:
+                if is_positive_number(local_snapshot_timeout):
+                    self.local_snapshot_timeout = datetime.now() - timedelta(hours=local_snapshot_timeout)
+                else:
+                    message = "Invalid parameter passed for 'local_snapshot_timeout'. Using default: {} hours!".format(
+                        self.local_snapshot_timeout
+                    )
+                    logger.info(message)
 
         if to_remote:
             # Check that valid aws_key and aws_secret is set
