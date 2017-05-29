@@ -20,6 +20,7 @@ AWS_ACCESS_KEY_ID="YOURAWSACCESSKEYIDAB"
 
 BACMAN_BUCKET="bacman-example"
 BACMAN_DIRECTORY="/home/bacman/backups"
+BACMAN_REGION="eu-west-1"
 ```
 
 **Step 3:** Create .py file with the contents below
@@ -27,8 +28,17 @@ BACMAN_DIRECTORY="/home/bacman/backups"
 ```python
 from bacman.postgres import Postgres
 
-Postgres(remove_old_tmp=True)
+Postgres(cleanup_local_snapshots=True)
 ```
+
+or
+
+```python
+from bacman.postgres import Postgres
+
+Postgres(cleanup_local_snapshots=True, local_snapshot_timeout=24)
+```
+
 
 ## Settings ##
 
@@ -74,7 +84,7 @@ Please add the `BACMAN_BUCKET` variable to your `/etc/environment` or `.pam_envi
 from bacman.postgres import Postgres
 
 def main():
-  Postgres(to_s3=True, remove_old_tmp=True)
+  Postgres(to_remote=True, cleanup_local_snapshots=True)
 
 if __name__ == "__main__":
   main()
