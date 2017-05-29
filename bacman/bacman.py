@@ -157,7 +157,7 @@ class BacMan:
         # Delete files from local folder
         for _file in os.listdir(self.directory):
             if _file.startswith(self.filename_prefix):
-                path = "{}{}".format(self.directory, _file)
+                path = os.path.realpath(os.path.join(self.directory, _file))
                 logger.info("Looking for file with path: {}...".format(path))
                 if os.path.exists(path):
                     t = os.path.getmtime(path)
