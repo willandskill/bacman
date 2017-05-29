@@ -158,11 +158,9 @@ class BacMan:
         for _file in os.listdir(self.directory):
             if _file.startswith(self.filename_prefix):
                 path = os.path.realpath(os.path.join(self.directory, _file))
-                logger.info("Looking for file with path: {}...".format(path))
                 if os.path.exists(path):
                     t = os.path.getmtime(path)
                     timestamp = datetime.fromtimestamp(t)
-                    logger.info("Checking file <Path: {}, Timestamp: {}> in local file system...".format(path, timestamp))
                     if timestamp < self.local_snapshot_timeout:
                         logger.info("Deleting file <{}> from local file system...".format(path))
                         os.remove(path)
