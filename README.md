@@ -76,18 +76,45 @@ Please add the `BACMAN_BUCKET` variable to your `/etc/environment` or `.pam_envi
 * default (MySQL): `mysqldump`
 
 
-### Examples ###
+### Examples
 
+#### Example 1
 ```python
 # /home/bacman/runbacman.py
 
 from bacman.postgres import Postgres
 
+# Uploads to remote AWS bucket
+# Removes old database snapshots that are older than 30 days (720 hrs)
 def main():
   Postgres(to_remote=True, cleanup_local_snapshots=True)
 
 if __name__ == "__main__":
   main()
+```
+
+#### Example 2
+```python
+# /home/bacman/runbacman.py
+
+from bacman.postgres import Postgres
+
+# Uploads to remote AWS bucket
+# Removes local snapshots that are older than 360 hrs
+# Removes remote snapshots that are older than 180 hours
+def main():
+  Postgres(to_remote=True, remote_snapshot_timeout=180, cleanup_local_snapshots=True, local_snapshot_timeout=360)
+
+if __name__ == "__main__":
+  main()
+```
+
+#### Crontab example
+
+Take a snapshot every 2 hours
+
+```
+0 */2 * * * ~/env/bin/python ~/runbacman.py >> /home/django/logs/crontab.log 2>&1
 ```
 
 You can test run the script above by
