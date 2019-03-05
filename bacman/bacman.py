@@ -16,7 +16,7 @@ from datetime import datetime, timedelta
 
 from boto.s3.key import Key
 
-from utils import is_positive_number
+from .utils import is_positive_number
 
 
 class BacMan:
