@@ -133,7 +133,7 @@ class BacMan:
         try:
             subprocess.call(self.get_command(path), shell=True)
             return path
-        except Exception, e:
+        except Exception as e:
             # TODO: Send mail to alert settings.admin
             logger.exception(e)
             raise e
