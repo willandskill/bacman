@@ -1,8 +1,8 @@
-# django-bacman #
+# bacman
 
 A simple library that takes a snapshot of a Postgres or MySQL database and uploads it to AWS S3.
 
-## Installation ##
+## Installation
 
 **Step 1:** - Install it
 
@@ -39,8 +39,7 @@ from bacman.postgres import Postgres
 Postgres(cleanup_local_snapshots=True, local_snapshot_timeout=24)
 ```
 
-
-## Settings ##
+## Settings
 
 ### DATABASE
 
@@ -49,7 +48,6 @@ Postgres(cleanup_local_snapshots=True, local_snapshot_timeout=24)
 Please add the `DATABASE_URL` variable to your `/etc/environment` or `.pam_environment`
 
 Read more at https://github.com/kennethreitz/dj-database-url
-
 
 ### Amazon Web Services
 
@@ -61,24 +59,25 @@ Please add the `AWS_ACCESS_KEY_ID` variable to your `/etc/environment` or `.pam_
 
 Please add the `AWS_SECRET_ACCESS_KEY` variable to your `/etc/environment` or `.pam_environment`
 
-
-### BacMan ###
+### BacMan
 
 #### BACMAN_BUCKET
 
 Please add the `BACMAN_BUCKET` variable to your `/etc/environment` or `.pam_environment`
 
 #### BACMAN_DIRECTORY
-* default: `/tmp/bacman`
+
+- default: `/tmp/bacman`
 
 #### BACMAN_PREFIX
-* default (Postgres): `pgdump`
-* default (MySQL): `mysqldump`
 
+- default (Postgres): `pgdump`
+- default (MySQL): `mysqldump`
 
 ### Examples
 
 #### Example 1
+
 ```python
 # /home/bacman/runbacman.py
 
@@ -94,6 +93,7 @@ if __name__ == "__main__":
 ```
 
 #### Example 2
+
 ```python
 # /home/bacman/runbacman.py
 
